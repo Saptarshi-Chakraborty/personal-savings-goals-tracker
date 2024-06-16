@@ -13,7 +13,7 @@ const Navbar = () => {
 
 
     return (
-        <nav className="navbar navbar-expand-lg"  data-bs-theme="light">
+        <nav className="navbar navbar-expand-lg" data-bs-theme="light">
             <div className="container-fluid">
                 <a className="navbar-brand fw-bold" href="/">Savings Tracker</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,23 +21,23 @@ const Navbar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" href="/my-goals/">My Goals</Link>
-                        </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" href="/add-goal/">Add Goal</Link>
-                        </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" href="/add-amount/">Add Amount</Link>
-                        </li>
                         {
-                            user &&
-                            <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" href="/my-account/">My Account</Link>
-                            </li>
-                        }
+                            user && <>
+                                <li className="nav-item">
+                                    <Link className="nav-link active" aria-current="page" href="/my-goals/">My Goals</Link>
+                                </li>
+
+                                <li className="nav-item">
+                                    <Link className="nav-link active" aria-current="page" href="/add-goal/">Add Goal</Link>
+                                </li>
+
+                                <li className="nav-item">
+                                    <Link className="nav-link active" aria-current="page" href="/add-amount/">Add Amount</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link active" aria-current="page" href="/my-account/">My Account</Link>
+                                </li>
+                            </>}
 
                         {
                             user && user.labels && user.labels.length > 0 && user.labels.includes('admin') &&
