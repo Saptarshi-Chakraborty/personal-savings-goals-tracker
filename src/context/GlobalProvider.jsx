@@ -53,6 +53,9 @@ const GlobalProvider = ({ children }) => {
     }
 
     async function logout() {
+        if (confirm("Are you sure you want to logout?") === false)
+            return false;
+
         try {
             await account.deleteSession('current');
             setUser(null);

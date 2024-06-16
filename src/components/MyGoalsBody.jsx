@@ -65,7 +65,6 @@ const MyGoalsPageBody = () => {
                         <div key={goal.$id} className="card my-3">
                             <div className="card-body py-2">
                                 <h5 className="card-title">{goal.name}</h5>
-                                <pre className="card-text text-small mt-0 mb-0">{goal?.description}</pre>
                                 <p>
                                     <small className="text-dark border-2 border-dark border-bottom fst-italic">Saved :</small>
                                     {" "}
@@ -74,6 +73,7 @@ const MyGoalsPageBody = () => {
 
                                 <ProgressBar min={0} max={100} now={percentage} className="text-danger" />
 
+                                <pre className="card-text text-small mt-2 mb-0">{goal?.description}</pre>
                             </div>
                         </div>
                     )

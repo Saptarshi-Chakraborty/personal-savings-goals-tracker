@@ -1,19 +1,19 @@
 import Navbar from '@/components/Navbar'
 import { GlobalContext } from '@/context/GlobalProvider';
 import { avatars } from '@/utils/appwrite';
+import timesAgo from '@/utils/times-ago';
 import Head from 'next/head'
 import Link from 'next/link';
 import React, { useContext } from 'react'
 
 const MyAccount = () => {
-    const { user } = useContext(GlobalContext);
+    const { user, logout } = useContext(GlobalContext);
 
     console.log(user)
 
     async function getNumberOfGoals() {
 
     }
-
 
     return (
         <>
@@ -47,11 +47,12 @@ const MyAccount = () => {
                                     }
                                 </p>
                                 <p className="card-text mb-1 fs-5"><small className="text-muted">account created on: </small> {new Date(user.$createdAt).toLocaleString()}</p>
-
-
+                                <p className="card-text mb-1 fs-5"><small className="text-muted">last logged in: </small> {timesAgo(user.accessedAt)}</p>
                             </div>
                         </div>
 
+
+                        <button className="btn btn-outline-danger my-4 fs-5 fw-semibold w-100 rounded-end-pill rounded-start-pill" onClick={logout}>Logout</button>
 
                     </main>
                     :
