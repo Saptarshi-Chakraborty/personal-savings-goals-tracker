@@ -52,7 +52,7 @@ const MyAccount = () => {
                         </div>
 
 
-                        <button className="btn btn-outline-danger my-4 fs-5 fw-semibold w-100 rounded-end-pill rounded-start-pill" onClick={logout}>Logout</button>
+                        <button className="btn btn-outline-danger mt-3 mb-5 fs-5 fw-semibold w-100 rounded-end-pill rounded-start-pill" onClick={logout}>Logout</button>
 
                     </main>
                     :
