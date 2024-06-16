@@ -3,10 +3,12 @@
 import { GlobalContext } from '@/context/GlobalProvider';
 import { account } from '@/utils/appwrite';
 import { ID } from 'appwrite';
+import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 
 const SignUpPageBody = () => {
     const { login } = useContext(GlobalContext);
+    const router = useRouter();
 
     /*
     * The input state
@@ -72,6 +74,8 @@ const SignUpPageBody = () => {
 
         if (result) {
             console.log('logged in');
+            alert('Account created successfully');
+            router.push('/my-goals/');
         } else {
             console.log('not logged in');
         }
