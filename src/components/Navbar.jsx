@@ -13,69 +13,62 @@ const Navbar = () => {
 
 
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className="navbar navbar-expand-lg"  data-bs-theme="light">
             <div className="container-fluid">
-                <a className="navbar-brand" href="#">Navbar</a>
+                <a className="navbar-brand fw-bold" href="/">Savings Tracker</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" href="/">Home</Link>
+                            <Link className="nav-link active" aria-current="page" href="/my-goals/">My Goals</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" href="/signup/">Signup</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" href="/login/">Login</Link>
-                        </li>
+
                         <li className="nav-item">
                             <Link className="nav-link active" aria-current="page" href="/add-goal/">Add Goal</Link>
                         </li>
+
                         <li className="nav-item">
                             <Link className="nav-link active" aria-current="page" href="/add-amount/">Add Amount</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" href="/">Home</Link>
-                        </li>
+                        {
+                            user &&
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" href="/my-account/">My Account</Link>
+                            </li>
+                        }
 
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <ul className="dropdown-menu">
-                                <li><a className="dropdown-item" href="#">Action</a></li>
-                                <li><a className="dropdown-item" href="#">Another action</a></li>
-                                <li><hr className="dropdown-divider" /></li>
-                                <li><a className="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" >
-                                {user ? 'Welcome, ' + `${user.name}` : 'Not logged In'}
-                            </a>
-                        </li>
+                        {
+                            user && user.labels && user.labels.length > 0 && user.labels.includes('admin') &&
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Admin
+                                </a>
+                                <ul className="dropdown-menu">
+                                    <li><a className="dropdown-item" href="#">View All Goals</a></li>
+                                    <li><a className="dropdown-item" href="#">View All Transactions</a></li>
+                                    <li><hr className="dropdown-divider" /></li>
+                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                        }
+
                     </ul>
                     <div>
                         {
                             user ? (
-                                <div>
-                                    <span>{user.email}</span>
-                                    <button className="btn btn-sm btn-danger" onClick={logout}>Sign Out</button>
-                                </div>
+                                <button className="btn btn-sm btn-danger" onClick={logout}>Logout</button>
                             ) : (
-                                <div>
-                                    <button onClick={() => account.createEmailPasswordSession(' ', ' ')}>Sign In</button>
-
-                                    <button onClick={() => account.createEmailPasswordSession(' ', ' ')}>Sign Up</button>
-                                </div>
+                                <>
+                                    <Link className="btn btn-primary" href="/login">Login</Link>
+                                </>
                             )
                         }
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav >
     )
 }
 

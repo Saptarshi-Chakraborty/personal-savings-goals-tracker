@@ -15,8 +15,8 @@ const GlobalProvider = ({ children }) => {
      */
     async function login(email, password) {
         let user = await fetchUser();
-
-        if (user) return Promise.resolve(user);
+        if (user) return user;
+        log("user is not already logged in");
 
         let result;
         try {

@@ -21,7 +21,7 @@ const SignUpPageBody = () => {
     * 
      */
     const [input, setInput] = useState({ name: '', email: '', password: '', confirmPassword: '' });
-
+    const [showPassword, setShowPassword] = useState(true);
 
     /**
     * Clear the input field
@@ -57,6 +57,11 @@ const SignUpPageBody = () => {
         console.log('submitting form');
         console.log(input);
 
+        if (input.password !== input.confirmPassword || input.password.length < 8) {
+            console.log('passwords do not match or password is less than 8 characters');
+            return;
+        }
+
         await account.create(ID.unique(), input.email, input.password, input.name).then(response => {
             console.log(response);
         }).catch(error => {
@@ -65,11 +70,15 @@ const SignUpPageBody = () => {
 
         const result = await login(input.email, input.password);
 
-        if(result) {
+        if (result) {
             console.log('logged in');
         } else {
             console.log('not logged in');
         }
+    }
+
+    async function toggleShowPassword() {
+        setShowPassword(!showPassword);
     }
 
     return (
@@ -87,12 +96,19 @@ const SignUpPageBody = () => {
 
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
-                    <input type="password" className="form-control" id="password" name="password" value={input.password} onChange={handleChange} autoComplete="new-password" required />
+                    <input type={showPassword ? "text" : "password"} className="form-control" id="password" name="password" value={input.password} onChange={handleChange} autoComplete="new-password" required />
                 </div>
 
                 <div className="mb-3">
                     <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
-                    <input type="password" className="form-control" id="confirmPassword" name="confirmPassword" value={input.confirmPassword} onChange={handleChange} required />
+                    <input type={showPassword ? "text" : "password"} className="form-control" id="confirmPassword" name="confirmPassword" value={input.confirmPassword} onChange={handleChange} required />
+                </div>
+
+                <div className="mb-3 form-check" >
+                    <input type="checkbox" style={{ cursor: "pointer" }} className="form-check-input" id="showPassword" checked={showPassword} onChange={toggleShowPassword} />
+                    <label className="form-check-label" style={{ cursor: "pointer" }} htmlFor="showPassword">
+                        Show Password
+                    </label>
                 </div>
 
                 <md-filled-button type="submit">

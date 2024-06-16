@@ -11,20 +11,10 @@ export default function Home() {
       </Head>
       <main >
         <h1>Personal Savings Goal Tracker</h1>
-        <ul>
-          <li>
-            <a href="/add-goal">Add Goal</a>
-          </li>
-          <li>
-            <a href="/goals">View Goals</a>
-          </li>
-          <li>
-            <a href="/login">Login</a>
-          </li>
-          <li>
-            <a href="/signup/">Signup</a>
-          </li>
-        </ul>
+        {/* home page of the website */}
+        <p>Welcome to the Personal Savings Goal Tracker!</p>
+        <p>Track your savings goals and amounts with ease.</p>
+        <p>Get started by creating a new account or logging in.</p>
       </main>
     </>
   );

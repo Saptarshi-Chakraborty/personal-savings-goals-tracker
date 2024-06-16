@@ -2,6 +2,7 @@ import { GlobalProvider } from "@/context/GlobalProvider";
 import "@/styles/globals.css";
 import "@material/web/common.js";
 import "bootstrap/dist/css/bootstrap.min.css"; // bootstrap css
+import '../styles/globals.css';
 
 import { useEffect } from "react";
 
