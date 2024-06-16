@@ -1,8 +1,10 @@
-import Navbar from '@/components/Navbar'
-import { GlobalContext } from '@/context/GlobalProvider'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import React, { useContext, useLayoutEffect, useState } from 'react'
+"use client";
+
+import Navbar from '@/components/Navbar';
+import { GlobalContext } from '@/context/GlobalProvider';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useContext, useLayoutEffect, useState } from 'react';
 
 const Login = () => {
     const { user, login } = useContext(GlobalContext)
@@ -75,7 +77,8 @@ const Login = () => {
                             Show Password
                         </label>
                     </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary" disabled={loading}>Submit</button>
+                    {loading && <span className='ms-2'>loading...</span>}
                 </form>
 
                 <div className="mt-3">

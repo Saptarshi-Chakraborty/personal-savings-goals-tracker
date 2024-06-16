@@ -1,8 +1,10 @@
-import MyGoalsPageBody from '@/components/MyGoalsBody'
-import Navbar from '@/components/Navbar'
-import { GlobalContext } from '@/context/GlobalProvider'
-import Head from 'next/head'
-import React, { useContext } from 'react'
+"use client";
+
+import MyGoalsPageBody from '@/components/MyGoalsBody';
+import Navbar from '@/components/Navbar';
+import { GlobalContext } from '@/context/GlobalProvider';
+import Head from 'next/head';
+import { useContext } from 'react';
 
 const MyGoals = () => {
     const {user} = useContext(GlobalContext)

@@ -61,18 +61,19 @@ const MyGoalsPageBody = () => {
                     const percentage = goal?.currentAmount * 100 / goal?.targetAmount
                     const progressLabel = `${goal?.currentAmount} / ${goal?.targetAmount}`
 
-                    console.log(` ${goal.name}`)
-                    console.log(`target: ${goal?.targetAmount} , current: ${goal?.currentAmount}`)
-                    console.log(`percentage: ${percentage}`)
-
                     return (
                         <div key={goal.$id} className="card my-3">
-                            <div className="card-body">
+                            <div className="card-body py-2">
                                 <h5 className="card-title">{goal.name}</h5>
+                                <pre className="card-text text-small mt-0 mb-0">{goal?.description}</pre>
+                                <p>
+                                    <small className="text-dark border-2 border-dark border-bottom fst-italic">Saved :</small>
+                                    {" "}
+                                    <span >{goal.currentAmount} / {goal?.targetAmount} Rs. ({parseInt(percentage)} %) </span>
+                                </p>
 
-                                <ProgressBar min={0} max={100} now={percentage} label={progressLabel} className="text-danger" />
+                                <ProgressBar min={0} max={100} now={percentage} className="text-danger" />
 
-                                <p className="card-text mt-2">{goal.description}</p>
                             </div>
                         </div>
                     )
@@ -83,7 +84,7 @@ const MyGoalsPageBody = () => {
             {
                 (goals.length > 0 && hasFetched) &&
                 <p className="mt-3">
-                   View all your <Link href="/my-transactions/">transactions</Link>
+                    View all your <Link href="/my-transactions/">transactions</Link>
                 </p>
             }
 
