@@ -1,7 +1,7 @@
 "use client";
 
 import Head from 'next/head'
-import React, { useContext, useContext, useLayoutEffect } from 'react'
+import React, { useContext, useLayoutEffect } from 'react'
 import SignUpPageBody from '@/components/SignUpBody'
 import Navbar from '@/components/Navbar';
 import { GlobalContext } from '@/context/GlobalProvider';
